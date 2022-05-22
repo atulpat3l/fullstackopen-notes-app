@@ -66,6 +66,10 @@ const App = () => {
     }, 5000);
   };
 
+  const updateNotes = (id) => {
+    setNotes(notes.filter((note) => id !== note.id));
+  };
+
   return (
     <div>
       <Notification message={errorMessage} />
@@ -87,6 +91,7 @@ const App = () => {
           </>
         )}
       </div>
+      <br />
       <button onClick={() => setShowAll(!showAll)}>
         show {showAll ? 'important' : 'all'}
       </button>
@@ -96,6 +101,7 @@ const App = () => {
             key={note.id}
             note={note}
             toggleImportance={() => toggleImportanceOf(note.id)}
+            updateNotes={updateNotes}
           />
         ))}
       </ul>
